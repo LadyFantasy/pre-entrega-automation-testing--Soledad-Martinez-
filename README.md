@@ -35,10 +35,7 @@ preentrega/
 │
 └─ README.md
 
-yaml
-Copiar código
 
----
 
 ## Descripción de los tests
 

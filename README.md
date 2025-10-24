@@ -20,44 +20,69 @@ La suite también incluye **capturas de pantalla automáticas** en caso de fallo
 
 ## Estructura del proyecto
 
-preentrega/
+pre-entrega-automation-testing-maria-soledad-martinez
 │
-├─ tests/
-│ └─ test_saucedemo.py # Contiene los 5 tests principales
+├── tests/
+│ ├── conftest.py
+│ ├── test_login.py
+│ ├── test_inventario.py
+│ ├── test_carrito.py
 │
-├─ utils/
-│ └─ helpers.py # Función de login reusable
+├── utils/
+│ └── helpers.py
 │
-├─ reports/ # Carpeta para reportes HTML y capturas automáticas
-│ └─ screenshots/ # Capturas de pantalla de tests fallidos
+├── reports/
+│ ├── screenshots/ # Capturas automáticas en caso de fallos
+│ └── reporte.html # Reporte HTML generado por pytest-html
 │
-├─ datos/ # (Opcional) Archivos externos como CSV o JSON
-│
-└─ README.md
+├── requirements.txt
+└── README.md
 
+## Instalación y Configuración
 
+1. **Clonar el repositorio:**
 
-## Descripción de los tests
+   git clone https://github.com/LadyFantasy/pre-entrega-automation-testing--Soledad-Martinez-
+   cd pre-entrega-automation-testing-maria-soledad-martinez
 
-La suite contiene **5 tests principales**:
+2. ## Instalar dependencias:
 
-1. **test_login_exitoso:** Valida que el login con credenciales correctas redirija a la página de inventario (`/inventory.html`) y verifica que el título y logo "Swag Labs" estén presentes.
-2. **test_elementos_login_visibles:** Verifica que los campos de usuario, contraseña y botón de login estén visibles.
-3. **test_catalogo_visible:** Comprueba que la página de inventario muestre productos visibles.
-4. **test_datos_primer_producto:** Valida que el primer producto tenga nombre y precio.
-5. **test_agregaryverificar_carrito:** Agrega el primer producto al carrito, valida el contador y verifica que el producto aparezca en el carrito.
-
----
-
-
-## Instalar dependencias:
 pip install -r requirements.txt
+Verificar que tengas ChromeDriver instalado y accesible en tu PATH.
 
-## Ejecución de tests
-Desde la raíz del proyecto:
-pytest -v tests/test_saucedemo.py
+3. ## Ejecución de las Pruebas
+   Para ejecutar todos los tests con salida detallada:
 
-## Para generar un reporte HTML:
-pytest -v tests/test_saucedemo.py --html=reports/reporte.html
+pytest -v
 
-Nota: Si un test falla, se guardará automáticamente una captura de pantalla en reports/screenshots/ con el nombre del test que falló.
+4. ## Para generar un reporte en HTML:
+
+pytest -v --html=reports/reporte.html
+
+# Casos de Prueba Implementados
+
+🔹 test_login.py
+Objetivo: Validar el flujo de inicio de sesión.
+Validaciones:
+Redirección a /inventory.html.
+Presencia de los textos “Products” y “Swag Labs” tras el login.
+Campos y botón de login visibles.
+
+🔹 test_inventario.py
+Objetivo: Verificar el catálogo de productos tras el login.
+Validaciones:
+Existencia de productos visibles.
+Nombre y precio del primer producto no vacíos.
+
+🔹 test_carrito.py
+Objetivo: Probar la interacción con el carrito.
+Validaciones:
+Agregar el primer producto.
+Contador del carrito actualizado.
+El producto aparece correctamente en la página del carrito.
+
+## Evidencias y Reportes
+
+Las capturas de pantalla automáticas se guardan en reports/screenshots/ cuando ocurre un fallo.
+
+El reporte HTML se genera en reports/reporte.html con los resultados de las pruebas.
